@@ -6,9 +6,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 TARGET Protocol Extractor is a single-file React component (`target-analyzer.jsx`, ~1300 lines) that analyzes observational research papers against the **TARGET 2025 reporting guideline** (Cashin et al., JAMA 2025) for target trial emulation studies. It uses the Anthropic Claude API with vision capability to extract structured protocol information and provide methodological critique.
 
-## Architecture
+The tool is deployed as a Claude artifact and hosted via GitHub Pages at:
+https://tjohnson250.github.io/Target-Protocol-Extractor/
 
-The entire application lives in `target-analyzer.jsx` as one React component with helper functions. There is no build system, package.json, or separate config — this component is designed to be integrated into an existing React project with its own bundler.
+Related project: [Target Trial Design Assistant (TTDA)](https://github.com/tjohnson250/TTDA) — helps *design* new target trial emulations, whereas this tool helps *evaluate* published papers.
+
+## Repository Structure
+
+- `target-analyzer.jsx` — The entire React application (single-file component)
+- `target-protocol-extractor.qmd` — Quarto launch page that embeds the Claude artifact via iframe
+- `target-protocol-extractor.html` — Rendered Quarto output (served by GitHub Pages)
+- `target-protocol-extractor_files/` — Quarto rendering assets (Bootstrap, JS libs)
+- `index.html` — Redirect to `target-protocol-extractor.html`
+- `references.bib` — BibTeX references (Cashin 2025, van Hal 2025)
+- `Target-Protocol-Extractor.Rproj` — RStudio project file
+
+## Rendering the Launch Page
+
+Open the project in RStudio and render `target-protocol-extractor.qmd`, or from the command line:
+
+```
+quarto render target-protocol-extractor.qmd
+```
+
+This produces `target-protocol-extractor.html` and the `target-protocol-extractor_files/` directory. Both must be committed and pushed for the GitHub Pages site to update.
+
+## Architecture of target-analyzer.jsx
+
+The entire application lives in a single file as one React component with helper functions. It is designed to run as a Claude artifact — no package.json, build system, or separate config.
 
 ### Code Organization (top to bottom)
 
@@ -35,10 +60,9 @@ All CSS is inline via a `<style>` JSX block within the component (~440 lines). U
 
 ## Development Notes
 
-- No package.json, test framework, linter, or build config exists yet — the component requires a React 18+ environment with a bundler (Vite, Next.js, etc.) to run
-- The component imports only `{ useState, useRef, useEffect, useCallback }` from React; no other npm dependencies
-- API key handling is done within the component (passed to `callClaude`)
+- The component runs as a Claude artifact — no npm dependencies beyond React 18+ (useState, useRef, useEffect, useCallback)
 - The Claude API call uses `web_search_20250305` as a tool for reference fetching
+- When updating the artifact, the embed URL in `target-protocol-extractor.qmd` must be updated to match the new Claude artifact URL, then re-rendered
 
 ## Domain Context
 
