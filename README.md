@@ -2,6 +2,8 @@
 
 A React-based tool that analyzes observational research papers against the **TARGET 2025 reporting guideline** (Cashin et al., JAMA 2025) for target trial emulation studies. It uses the Anthropic Claude API to extract structured protocol information, assess methodological rigor, and provide critique organized around the TARGET checklist.
 
+**Try it now:** [https://tjohnson250.github.io/Target-Protocol-Extractor/](https://tjohnson250.github.io/Target-Protocol-Extractor/) (requires a paid Claude account)
+
 ## What It Does
 
 - **Accepts input** via PDF upload (up to 20MB per file, multiple files supported for supplements) or article identifier (DOI, PMCID, PMID, URL)
