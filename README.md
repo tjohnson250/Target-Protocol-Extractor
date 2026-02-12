@@ -16,25 +16,7 @@ A React-based tool that analyzes observational research papers against the **TAR
 
 ## Requirements
 
-- A React 18+ project with a bundler (Vite, Next.js, Create React App, etc.)
-- An [Anthropic API key](https://console.anthropic.com/) — the component calls the Claude API directly from the browser via `fetch`
-
-## Usage
-
-The component is a single file (`target-analyzer.jsx`) that exports a default React component:
-
-```jsx
-import TargetTrialAnalyzer from "./target-analyzer";
-
-function App() {
-  return <TargetTrialAnalyzer />;
-}
-```
-
-The component has no npm dependencies beyond React itself. It uses:
-- `claude-sonnet-4-20250514` for analysis (with vision capability for PDFs)
-- `web_search_20250305` tool for fetching articles by DOI/PMCID/PMID and ClinicalTrials.gov lookups
-- Google Fonts loaded via CSS import (Literata, DM Sans, JetBrains Mono)
+- A paid [Claude](https://claude.ai) subscription (Pro, Team, or Enterprise) — usage counts against your credit
 
 ## TARGET 2025 Checklist
 
